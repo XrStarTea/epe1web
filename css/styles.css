@@ -1,0 +1,96 @@
+:root {
+    --cx-yellow: #ffd100;
+    --cx-blue: #0033a0;
+    --cx-dark: #333333;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-radius: 8px;
+    --spacing-md: 1.5rem;
+}
+
+/* base / normalizaciónpropia */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--cx-dark);
+}
+
+/* layout */
+.l-container {
+    /* Uso de clamp para un diseño fluido y restringido */
+    width: clamp(300px, 95%, 1100px);
+    margin: 0 auto;
+}
+
+/* componentes */
+.c-service-card {
+    background-color: var(--card-bg);
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.c-service-card > h3 {
+    color: var(--cx-blue);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.c-service-card ul {
+    padding-left: 1rem;
+    margin-bottom: 0;
+}
+
+input[type="number"] {
+    /* Forzar un ancho máximo seguro usando min() */
+    width: min(100%, 400px);
+}
+
+/* estados Visuales e Interacciones */
+.c-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.c-service-card:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--cx-blue);
+    outline-offset: 2px;
+}
+
+/* clases de estado manipuladas por JavaScript */
+.is-selected {
+    border-color: var(--cx-blue);
+    background-color: #f0f4f8;
+}
+
+.is-hidden {
+    display: none !important; 
+}
+
+section#resultado-panel.is-hidden,
+div#dimensiones-block.is-hidden {
+    display: none;
+}
+
+/* error para inputs validado por JS */
+.is-error {
+    border-color: #dc3545;
+    background-color: #ffe6e6;
+}
+
+/* responsividad */
+@media (max-width: 576px) {
+    .c-service-card > h3 {
+        font-size: 1.1rem;
+    }
+}
